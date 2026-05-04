@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Рассылка {{ mailing.pk }}{% endblock %}
+{% block content %}
+<h1>Рассылка {{ mailing.pk }}</h1>
+<p><strong>Статус:</strong> {{ mailing.status }}</p>
+<p><strong>Начало:</strong> {{ mailing.start_time }}</p>
+<p><strong>Конец:</strong> {{ mailing.end_time }}</p>
+<p><strong>Сообщение:</strong> {{ mailing.message.subject }}</p>
+<p><strong>Получатели:</strong></p>
+<ul>{% for client in mailing.recipients.all %}<li>{{ client.email }} — {{ client.full_name }}</li>{% empty %}<li>Нет получателей</li>{% endfor %}</ul>
+
+{% if messages %}
+{% for message in messages %}<div class="alert alert-info">{{ message }}</div>{% endfor %}
+{% endif %}
+
+<form method="post" action="{% url 'mailing_send' mailing.pk %}" class="mt-3">
+{% csrf_token %}
+<button type="submit" class="btn btn-success">🚀 Отправить рассылку</button>
+<a href="{% url 'mailing_list' %}" class="btn btn-secondary">← Назад</a>
+</form>
+{% endblock %}
