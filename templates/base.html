@@ -10,6 +10,7 @@
 <a class="nav-link text-white" href="{% url 'mailing_list' %}">Рассылки</a>
 <a class="nav-link text-white" href="{% url 'client_list' %}">Клиенты</a>
 <a class="nav-link text-white" href="{% url 'message_list' %}">Сообщения</a>
+<a class="nav-link text-white" href="{% url 'attempt_list' %}">Попытки</a>
 <div class="ms-auto d-flex">
 {% if user.is_authenticated %}
 <span class="text-white me-3">👤 {{ user.username }}</span>

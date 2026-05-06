@@ -8,5 +8,6 @@ urlpatterns = [
     path('clients/', include('clients.urls')),
     path('messages/', include('messages_app.urls')),
     path('mailings/', include('mailings.urls')),
+    path('attempts/', include('attempts.urls')),
     path('users/', include('users.urls')),
 ]
